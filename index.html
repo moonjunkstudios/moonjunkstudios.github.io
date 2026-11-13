@@ -1,0 +1,182 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>BASE JUMP: FREEFALL · Moonjunk Studios</title>
+  <meta name="description" content="Jump off a cliff. Thread a canyon. Stick the landing. A free wingsuit arcade game you play in your browser, from Moonjunk Studios.">
+  <meta name="theme-color" content="#121A2E">
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="icon" href="favicon.ico" sizes="48x48">
+  <link rel="apple-touch-icon" href="apple-touch-icon.png">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="BASE JUMP: FREEFALL · Moonjunk Studios">
+  <meta property="og:description" content="Wingsuit through canyons, a dusk city and a lava gorge, then stick the bullseye. Free in your browser.">
+  <meta property="og:image" content="https://moonjunkstudios.com/assets/img/og-card.jpg">
+  <meta property="og:url" content="https://moonjunkstudios.com/">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="preload" href="assets/fonts/bowlby-one.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="assets/fonts/montserrat-var.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="assets/css/site.css">
+  <script>if (matchMedia("(hover: none) and (pointer: coarse)").matches && !matchMedia("(any-pointer: fine)").matches) document.documentElement.classList.add("touch-only");</script>
+</head>
+<body class="on-hero">
+  <a class="skip" href="#play" hidden>Skip to play</a>
+
+  <header class="topbar">
+    <a class="mark" href="#top" aria-label="Moonjunk Studios home"><img src="assets/brand/moonjunk-wordmark-dark.svg" alt="Moonjunk Studios" width="160" height="51"></a>
+    <div class="score" aria-hidden="true"><span class="num" id="score">0</span><span class="rings" id="rings">RINGS 0/4</span></div>
+    <a class="btn btn-gold desk-only" href="play.html">Play free</a>
+    <button class="btn btn-gold touch-only-show copy-link" type="button">Copy link</button>
+  </header>
+
+  <!-- the page is the jump: altitude falls as you scroll; every section is a ring -->
+  <div class="hud" aria-hidden="true">
+    <div class="alt" id="altBox"><span class="num" id="alt">600</span><span class="unit">M AGL</span></div>
+    <div class="track" id="track"><b id="dot"></b></div>
+    <div><span class="num" id="spd">0</span><span class="unit">KM/H</span></div>
+    <div class="mode" id="mode">STANDING</div>
+  </div>
+
+  <main id="top">
+    <section class="hero" data-mode="STANDING">
+      <img class="poster" src="assets/video/hero-loop.jpg" alt="">
+      <video id="heroVid" autoplay muted loop playsinline preload="auto" poster="assets/video/hero-loop.jpg" aria-hidden="true">
+        <source src="assets/video/hero-loop.mp4" type="video/mp4">
+      </video>
+      <div class="inner">
+        <div class="label">Moonjunk Studios presents</div>
+        <h1 class="title"><span class="a">Base Jump</span><span class="b">Freefall</span></h1>
+        <p class="lede">Jump off a cliff. Thread a canyon. Stick the landing.<br>A free wingsuit arcade game that runs right in your desktop browser.</p>
+        <div class="ctas desk-only">
+          <a class="btn btn-gold" href="play.html">Play free <span aria-hidden="true">▸</span></a>
+          <a class="btn btn-ghost" href="#drop">Watch the trailer</a>
+        </div>
+        <p class="needs desk-only">Plays in a desktop browser with a keyboard or gamepad.</p>
+        <div class="ctas touch-only-show">
+          <a class="btn btn-gold" href="#drop">Watch the trailer <span aria-hidden="true">▸</span></a>
+          <button class="btn btn-ghost copy-link" type="button">Copy game link</button>
+        </div>
+        <p class="needs touch-only-show">BASE JUMP: FREEFALL needs a keyboard or gamepad, so it doesn't play on phones yet. Send yourself the link and jump on a computer.</p>
+      </div>
+      <div class="prompt" aria-hidden="true"><span class="k-desk">SCROLL OR PRESS <kbd>SPACE</kbd> TO DIVE IN ↓</span><span class="k-touch">SCROLL TO DIVE IN ↓</span></div>
+    </section>
+
+    <section class="gate trailer" id="drop" data-ring data-mode="FREEFALL">
+      <div class="wrap">
+        <div class="head">
+          <div class="alt-tag">RING 1 · THE DROP</div>
+          <h2>Watch the drop</h2>
+        </div>
+        <div class="frame">
+          <video id="trailer" preload="none" playsinline poster="assets/video/trailer-poster.jpg" controls>
+            <source src="assets/video/trailer.mp4" type="video/mp4">
+          </video>
+          <button class="play" id="playTrailer" aria-label="Play the trailer"><span><svg viewBox="0 0 24 24"><path d="M6 4l15 8-15 8z"/></svg></span></button>
+        </div>
+        <p class="note">Official trailer: 43 seconds of real gameplay, with the game's own synthesized music and sound.</p>
+      </div>
+    </section>
+
+    <section class="gate" id="how" data-ring data-mode="WINGSUIT">
+      <div class="wrap">
+        <div class="head">
+          <div class="alt-tag">RING 2 · THE MOVES</div>
+          <h2>Fly low. Show off.</h2>
+          <p class="lede">Arcade wingsuit flying with real consequences. Every point you score, you earned close to the rock.</p>
+        </div>
+        <div class="tiles">
+          <article class="tile">
+            <video class="loop" muted loop playsinline preload="none" poster="assets/video/f-wingsuit.jpg"><source src="assets/video/f-wingsuit.mp4" type="video/mp4"></video>
+            <span class="k">W · S · A · D</span>
+            <div class="txt"><h3>Fly low</h3><p>Hug the terrain to build a proximity chain up to ×5. Crash and it's gone.</p></div>
+          </article>
+          <article class="tile">
+            <video class="loop" muted loop playsinline preload="none" poster="assets/video/f-tricks.jpg"><source src="assets/video/f-tricks.mp4" type="video/mp4"></video>
+            <span class="k">HOLD SHIFT</span>
+            <div class="txt"><h3>Flip out</h3><p>Tuck for flips, spins and log rolls, then barrel-roll with Q and E. Open up clean, or bail spectacularly.</p></div>
+          </article>
+          <article class="tile">
+            <video class="loop" muted loop playsinline preload="none" poster="assets/video/f-lines.jpg"><source src="assets/video/f-lines.mp4" type="video/mp4"></video>
+            <span class="k">DAREDEVIL LINES</span>
+            <div class="txt"><h3>Thread the gaps</h3><p>Knife-edge crevices, needle-eye holes, a basalt gauntlet. Optional, brutal, and worth up to 3,500 each.</p></div>
+          </article>
+          <article class="tile">
+            <video class="loop" muted loop playsinline preload="none" poster="assets/video/f-bullseye.jpg"><source src="assets/video/f-bullseye.mp4" type="video/mp4"></video>
+            <span class="k">SPACE · S TO FLARE</span>
+            <div class="txt"><h3>Stick the bullseye</h3><p>Pull the canopy, steer it in and flare at 3 m. Land within 2 m of the centre for the bullseye bonus.</p></div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="gate courses" id="courses" data-ring data-mode="WINGSUIT">
+      <div class="wrap">
+        <div class="head">
+          <div class="alt-tag">RING 3 · THE COURSES</div>
+          <h2>Three drops</h2>
+          <p class="lede">Each with its own exit, line, music and landing. Land safely on a course's target (within 25 m of the bullseye) to unlock the next.</p>
+        </div>
+        <div class="grid">
+          <article class="course">
+            <div class="media"><img src="assets/img/canyon-vista-960.webp" alt="Wingsuit pilot over Widowmaker Canyon's meadow" loading="lazy">
+              <video muted loop playsinline preload="none"><source src="assets/video/c-canyon.mp4" type="video/mp4"></video><span class="n">01</span></div>
+            <div class="body"><h3>Widowmaker Canyon</h3><p>Thread a narrow rock canyon, then nail the meadow bullseye.</p>
+              <div class="medals"><span class="b">BRONZE 8,000</span><span class="s">SILVER 14,000</span><span class="g">GOLD 20,000</span></div></div>
+          </article>
+          <article class="course">
+            <div class="media"><img src="assets/img/skyline-960.webp" alt="Wingsuit pilot over the city at dusk on Skyline Run" loading="lazy">
+              <video muted loop playsinline preload="none"><source src="assets/video/c-skyline.mp4" type="video/mp4"></video><span class="n">02</span></div>
+            <div class="body"><h3>Skyline Run</h3><p>Dusk over the city: tower exit, avenue run, rooftop helipad landing.</p>
+              <div class="medals"><span class="b">BRONZE 7,000</span><span class="s">SILVER 12,000</span><span class="g">GOLD 17,000</span></div>
+              <div class="lock">Unlocks when you land on the Widowmaker Canyon target</div></div>
+          </article>
+          <article class="course">
+            <div class="media"><img src="assets/img/fire-gate-960.webp" alt="Wingsuit pilot flying through the Fire Gate over a lava river" loading="lazy">
+              <video muted loop playsinline preload="none"><source src="assets/video/c-caldera.mp4" type="video/mp4"></video><span class="n">03</span></div>
+            <div class="body"><h3>Caldera Run</h3><p>Crater-rim exit, a lava gorge, and a black-sand beach landing.</p>
+              <div class="medals"><span class="b">BRONZE 8,000</span><span class="s">SILVER 14,000</span><span class="g">GOLD 20,000</span></div>
+              <div class="lock">Unlocks when you land on the Skyline Run target</div></div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="landing" id="play" data-ring data-mode="CANOPY">
+      <div class="bg" aria-hidden="true"></div>
+      <div class="wrap inner">
+        <div class="alt-tag">RING 4 · LANDING ZONE</div>
+        <h2>Land here</h2>
+        <div class="target"><div class="disc" aria-hidden="true"></div><a class="btn btn-gold desk-only" id="landBtn" href="play.html">Play free <span aria-hidden="true">▸</span></a><button class="btn btn-gold touch-only-show copy-link" type="button">Copy game link</button></div>
+        <div class="facts"><span>Free</span><span>Desktop browser</span><span>No install, no account</span><span>Keyboard or gamepad</span></div>
+        <p class="result" id="result" aria-live="polite"></p>
+      </div>
+    </section>
+  </main>
+
+  <aside class="support" aria-labelledby="supportTitle">
+    <div class="wrap card">
+      <div class="txt">
+        <h2 id="supportTitle">Support Moonjunk Studios <span class="emoji" aria-hidden="true">🚀</span></h2>
+        <p>Enjoying BASE JUMP: FREEFALL? Our games are free to play, and we'd love to keep it that way. If you'd like to help us create more games, consider leaving a tip!</p>
+      </div>
+      <a class="btn btn-ghost" href="https://ko-fi.com/moonjunkstudios" target="_blank" rel="noopener">Support Moonjunk Studios<span class="sr-only"> (opens Ko-fi in a new tab)</span> <span aria-hidden="true">↗</span></a>
+    </div>
+  </aside>
+
+  <footer>
+    <div class="wrap row">
+      <div>
+        <img src="assets/brand/moonjunk-logo-dark.svg" alt="Moonjunk Studios" width="220" height="125" loading="lazy">
+      </div>
+      <div class="tag">Games built from spare parts.
+        <small>BASE JUMP: FREEFALL is Moonjunk Studios' first game. © 2026 Moonjunk Studios.</small></div>
+      <nav aria-label="Footer"><a href="play.html">Play</a><a href="#drop">Trailer</a><a href="#courses">Courses</a><a href="https://ko-fi.com/moonjunkstudios" target="_blank" rel="noopener">Support us<span class="sr-only"> (opens Ko-fi in a new tab)</span></a><a href="privacy.html">Privacy</a></nav>
+    </div>
+  </footer>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+  <script src="assets/js/analytics.js" defer></script>
+  <script src="assets/js/freefall.js" defer></script>
+</body>
+</html>
