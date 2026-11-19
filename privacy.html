@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Privacy · Moonjunk Studios</title>
+  <meta name="description" content="What Moonjunk Studios collects on moonjunkstudios.com and in BASE JUMP: FREEFALL, and how to turn it off.">
+  <meta name="theme-color" content="#121A2E">
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="icon" href="favicon.ico" sizes="48x48">
+  <link rel="apple-touch-icon" href="apple-touch-icon.png">
+  <link rel="stylesheet" href="assets/css/site.css">
+</head>
+<body>
+  <main class="legal">
+    <div class="wrap">
+      <a class="mark" href="index.html" aria-label="Moonjunk Studios home"><img src="assets/brand/moonjunk-wordmark-dark.svg" alt="Moonjunk Studios" width="160" height="51"></a>
+      <h1>Privacy</h1>
+      <p>Last updated 12 November 2026. Short version: we only count visits and gameplay if you say yes, we never see who you are, and we don't show ads.</p>
+
+      <div class="choice" id="choice">
+        <span id="choiceText">Analytics: not chosen yet.</span>
+        <button class="btn btn-gold" type="button" id="allow">Allow analytics</button>
+        <button class="btn btn-ghost" type="button" id="deny">Turn analytics off</button>
+      </div>
+
+      <h2>What we use</h2>
+      <p>This site uses <strong>Google Analytics 4</strong>, run by Google, to count visits and see how the game is played. It loads only after you click <strong>Allow</strong>. If you click <strong>No thanks</strong>, or your browser sends a Global Privacy Control signal, nothing is loaded and no analytics cookies are set.</p>
+
+      <h2>What is collected (only if you allow it)</h2>
+      <ul>
+        <li><strong>Visits:</strong> pages viewed, how you arrived (for example a search, a link or a campaign tag in the link), and roughly where and on what kind of device (country and city level, browser, screen size). Google does not store your IP address in Analytics.</li>
+        <li><strong>Clicks to other sites:</strong> when you click our Ko-fi link or one of our social profiles.</li>
+        <li><strong>Gameplay summaries in BASE JUMP: FREEFALL:</strong> the game loaded, a course was started, how the run ended (landed, completed, crashed or restarted), the score, the medal, how long the run lasted, and whether you finished the tutorial.</li>
+        <li><strong>Returning visits:</strong> a random ID in the <code>_ga</code> cookies lets Analytics tell a new visitor from a returning one. It is not linked to your name, email or any account.</li>
+      </ul>
+
+      <h2>What is never collected</h2>
+      <ul>
+        <li>Your name, email or any account. The game has no accounts.</li>
+        <li>Your keystrokes or controls, or anything you type.</li>
+        <li>Your saved game. Your progress stays in your own browser.</li>
+        <li>Advertising data. Ads features, ad personalisation and Google Signals are switched off.</li>
+      </ul>
+
+      <h2>Cookies and storage</h2>
+      <ul>
+        <li><code>_ga</code> and <code>_ga_G8VVEFEW93</code>: Google Analytics, set only after you allow it, kept for up to 13 months.</li>
+        <li><code>mj_analytics</code> (your browser's local storage): remembers your yes or no, so we don't ask on every page. We ask again after 13 months.</li>
+        <li>The game saves your progress and settings in your browser's storage. That stays on your device and is never sent to us.</li>
+      </ul>
+
+      <h2>Where the game runs</h2>
+      <p>This notice covers moonjunkstudios.com only. If you play BASE JUMP: FREEFALL on a games portal such as CrazyGames, our analytics is switched off there, and that portal's own privacy policy applies.</p>
+
+      <h2>Keeping and deleting data</h2>
+      <p>Analytics data is kept for 14 months, then deleted by Google. To stop collection, click <strong>Turn analytics off</strong> above: it removes the Analytics cookies from this site. You can also clear this site's cookies in your browser, or use <a href="https://tools.google.com/dlpage/gaoptout" rel="noopener">Google's opt-out add-on</a>. Google's own use of the data is described in <a href="https://policies.google.com/privacy" rel="noopener">Google's privacy policy</a>.</p>
+
+      <h2>Contact</h2>
+      <p>Questions or requests about your data: message us through our <a href="https://ko-fi.com/moonjunkstudios" target="_blank" rel="noopener">Ko-fi page</a>. Because we don't know who you are, we usually can't find your data in Analytics, but turning analytics off stops any more being collected.</p>
+
+      <p><a href="index.html">← Back to the site</a></p>
+    </div>
+  </main>
+  <script src="assets/js/analytics.js"></script>
+  <script>
+    (() => {
+      const A = window.MoonjunkAnalytics, t = document.getElementById("choiceText");
+      const show = () => { t.textContent = "Analytics: " + (A.choice === "granted" ? "on." : A.choice === "denied" ? "off." : "not chosen yet."); };
+      document.getElementById("allow").onclick = () => { A.allow(); show(); };
+      document.getElementById("deny").onclick = () => { A.deny(); show(); };
+      document.addEventListener("mj-analytics", show);
+      show();
+    })();
+  </script>
+</body>
+</html>

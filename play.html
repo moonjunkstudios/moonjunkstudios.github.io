@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Play BASE JUMP: FREEFALL · Moonjunk Studios</title>
+  <meta name="description" content="Play BASE JUMP: FREEFALL free in your browser. Wingsuit, tricks, daredevil lines and a bullseye landing.">
+  <meta name="theme-color" content="#0B1120">
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="icon" href="favicon.ico" sizes="48x48">
+  <link rel="apple-touch-icon" href="apple-touch-icon.png">
+  <meta property="og:title" content="Play BASE JUMP: FREEFALL">
+  <meta property="og:image" content="https://moonjunkstudios.com/assets/img/og-card.jpg">
+  <link rel="preload" href="assets/fonts/montserrat-var.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="assets/css/site.css">
+  <link rel="stylesheet" href="assets/css/play.css">
+</head>
+<body class="play-page">
+  <header class="bar">
+    <nav class="home-nav" aria-label="Site">
+      <a class="chip" href="index.html"><span aria-hidden="true">←</span> Home</a>
+      <a class="mark" href="index.html" aria-label="Back to the Moonjunk Studios home page"><img src="assets/brand/moonjunk-wordmark-dark.svg" alt="Moonjunk Studios" width="120" height="38"></a>
+    </nav>
+    <div class="game-name">BASE JUMP: <b>FREEFALL</b></div>
+    <div class="tools">
+      <button class="chip" id="controlsBtn" aria-expanded="false" aria-controls="controls">Controls</button>
+      <button class="chip" id="fsBtn" disabled>Fullscreen</button>
+    </div>
+  </header>
+
+  <main class="stage" id="stage">
+    <canvas id="unity-canvas" tabindex="0" aria-label="BASE JUMP: FREEFALL game" aria-describedby="gameHelp"></canvas>
+    <p class="sr-only" id="gameHelp">The game is drawn as moving pictures, so its menus can't be read by a screen reader yet.
+      It opens on the course menu: use the up and down arrow keys and Enter to choose a course (Widowmaker Canyon is first; the others unlock in order).
+      In flight: Space jumps and opens the canopy, W and S dive and pull up, A and D bank, Q and E barrel-roll, hold Shift for tricks.
+      Escape or P pauses; R restarts. The Controls button lists every key.</p>
+    <p class="sr-only" id="gameStatus" role="status" aria-live="polite"></p>
+
+    <div class="loader" id="loader">
+      <img src="assets/brand/moonjunk-logo-dark.svg" alt="Moonjunk Studios" width="360" height="204">
+      <div class="bar-out" id="barOut" role="progressbar" aria-label="Loading the game" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"><div class="bar-in" id="bar"></div></div>
+      <div class="pct" id="pct">Fuelling the rocket… 0%</div>
+      <p class="tip" id="tip"></p>
+    </div>
+
+    <div class="notice" id="mobileNote" hidden>
+      <h2>Bring a keyboard</h2>
+      <p>BASE JUMP: FREEFALL is flown with a keyboard or a gamepad, and it isn't built for touch screens yet. Open this page on a computer for the full jump.</p>
+      <div class="row"><button class="btn btn-gold" id="copyLink" type="button">Copy game link</button><a class="btn btn-ghost" href="index.html">Back to the site</a></div>
+      <button class="linkish" id="tryAnyway" type="button">Try loading it anyway</button>
+      <p class="copied" id="copied" role="status" aria-live="polite"></p>
+    </div>
+
+    <div class="error" id="err" hidden></div>
+  </main>
+
+  <aside class="controls" id="controls" hidden>
+    <h2>Controls</h2>
+    <table>
+      <tr><th>Jump / open canopy</th><td><kbd>Space</kbd></td><td>A</td></tr>
+      <tr><th>Dive / pull up</th><td><kbd>W</kbd> <kbd>S</kbd></td><td>Left stick</td></tr>
+      <tr><th>Bank and turn</th><td><kbd>A</kbd> <kbd>D</kbd></td><td>Left stick</td></tr>
+      <tr><th>Barrel roll</th><td><kbd>Q</kbd> <kbd>E</kbd></td><td>LB / RB</td></tr>
+      <tr><th>Tuck for tricks (hold)</th><td><kbd>Shift</kbd></td><td>RT / LT</td></tr>
+      <tr><th>Canopy: steer · flare · risers</th><td><kbd>A</kbd><kbd>D</kbd> · <kbd>S</kbd> · <kbd>W</kbd></td><td>Stick</td></tr>
+      <tr><th>Restart · camera · graphics</th><td><kbd>R</kbd> · <kbd>C</kbd> · <kbd>G</kbd></td><td>Y · R3</td></tr>
+      <tr><th>Pause</th><td><kbd>Esc</kbd> / <kbd>P</kbd></td><td>Start</td></tr>
+    </table>
+    <p>Knife-edge crevices: roll onto your side with Q or E before the slit. Release Shift to open up from a trick.</p>
+    <button class="btn btn-ghost" id="closeControls">Got it</button>
+  </aside>
+
+  <script src="assets/js/analytics.js" defer></script>
+  <script src="assets/js/play.js" defer></script>
+</body>
+</html>
